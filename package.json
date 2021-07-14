@@ -6,7 +6,8 @@
     "scripts": {
         "lint": "eslint '**/*.{js,ts}' --quiet --fix",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "ts-node src/index.ts"
+        "dev": "ts-node src/index.ts",
+        "build": "tsc"
     },
     "author": "ScandiumSoftware",
     "license": "ISC",
