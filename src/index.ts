@@ -1,3 +1,5 @@
-import { start } from './server.js';
+import { config } from 'dotenv';
+import { start } from './server';
 
+config();
 start();
