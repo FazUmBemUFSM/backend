@@ -1,14 +1,9 @@
 import { DataTypes } from 'sequelize/types';
 import db from '../config/database';
 
-import Address from './address.model';
 import User from './user.model';
 
-/*
- * Eventually it is better to transform the status type to ENUM
- */
-
-const Institution = db.define('Institution', {
+const Curator = db.define('Curator', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -19,18 +14,10 @@ const Institution = db.define('Institution', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    status: {
-        type: DataTypes.STRING,
-        defaultValue: '',
-    },
-    address_id: {
-        type: DataTypes.INTEGER,
-        references: { model: Address, key: 'id' },
-    },
     user_id: {
         type: DataTypes.INTEGER,
         references: { model: User, key: 'id' },
     },
 });
 
-export default Institution;
+export default Curator;
