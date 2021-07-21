@@ -1,12 +1,10 @@
 import { Router } from 'express';
 import { Request, Response } from 'express';
-import {
-    findAllInstitution,
-} from './controllers/institution.controller';
+import institutionRouter from './routers/institution.router';
 
 const router = Router();
 
-router.route('/institutions').get(findAllInstitution)
+router.use('/institutions', institutionRouter);
 
 // Request made to non-existent resource
 router.use((req: Request, res: Response) => {
