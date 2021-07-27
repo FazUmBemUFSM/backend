@@ -1,3 +1,6 @@
-import { getInstitutionRow } from '../models/institution.model';
+import Institution from '../models/institution.model';
+import { Model } from 'sequelize';
 
-export const getAllInstitution = async (): Promise<Response> => getInstitutionRow();
+export const getAllInstitution = async (): Promise<Model<any, any>[]> => {
+  return Institution.findAll();
+}
