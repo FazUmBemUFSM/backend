@@ -4,10 +4,6 @@ import db from '../config/database';
 import Address from './address.model';
 import User from './user.model';
 
-/*
- * Eventually it is better to transform the status type to ENUM
- */
-
 const Institution = db.define('Institution', {
     id: {
         type: DataTypes.INTEGER,
@@ -20,16 +16,16 @@ const Institution = db.define('Institution', {
         allowNull: false,
     },
     status: {
-        type: DataTypes.STRING,
-        defaultValue: '',
+        type: DataTypes.ENUM('registered', 'approved', 'rejected'),
+        defaultValue: 'registered',
     },
     address_id: {
         type: DataTypes.INTEGER,
-        references: { model: Address, key: 'id' },
+        references: { model: 'Address', key: 'id' },
     },
     user_id: {
         type: DataTypes.INTEGER,
-        references: { model: User, key: 'id' },
+        references: { model: 'User', key: 'id' },
     },
 });
 

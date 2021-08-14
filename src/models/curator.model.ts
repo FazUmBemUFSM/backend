@@ -16,7 +16,7 @@ const Curator = db.define('Curator', {
     },
     user_id: {
         type: DataTypes.INTEGER,
-        references: { model: User, key: 'id' },
+        references: { model: 'User', key: 'id' },
     },
 });
 

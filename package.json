@@ -8,7 +8,8 @@
         "start": "yarn run build && node -r dotenv/config dist/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
         "dev": "nodemon",
-        "build": "tsc"
+        "build": "tsc",
+        "db:makemigrations": "./node_modules/sequelize-auto-migrations/bin/makemigration.js"
     },
     "author": "ScandiumSoftware",
     "license": "ISC",
