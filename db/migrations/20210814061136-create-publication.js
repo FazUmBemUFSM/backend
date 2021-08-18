@@ -28,7 +28,13 @@ module.exports = {
                 },
                 institution_id: {
                     type: DataTypes.INTEGER,
-                    references: { model: 'Institution', key: 'id' },
+                    references: { model: 'Institutions', key: 'id' },
+                },
+                createdAt: {
+                    type: Sequelize.DATE,
+                },
+                updatedAt: {
+                    type: Sequelize.DATE,
                 },
             },
             { schema: 'public' },

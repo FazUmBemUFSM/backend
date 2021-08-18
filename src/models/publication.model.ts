@@ -24,7 +24,7 @@ const Publication = db.define('Publication', {
     },
     institution_id: {
         type: DataTypes.INTEGER,
-        references: { model: 'Institution', key: 'id' },
+        references: { model: Institution, key: 'id' },
     },
 });
 

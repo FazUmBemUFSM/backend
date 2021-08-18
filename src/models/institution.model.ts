@@ -21,11 +21,11 @@ const Institution = db.define('Institution', {
     },
     address_id: {
         type: DataTypes.INTEGER,
-        references: { model: 'Address', key: 'id' },
+        references: { model: 'Addresses', key: 'id' },
     },
     user_id: {
         type: DataTypes.INTEGER,
-        references: { model: 'User', key: 'id' },
+        references: { model: User, key: 'id' },
     },
 });
 
