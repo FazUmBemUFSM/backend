@@ -18,6 +18,15 @@ module.exports = {
                     type: DataTypes.STRING,
                     allowNull: false,
                 },
+                email: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                    unique: true,
+                },
+                password: {
+                    type: DataTypes.STRING,
+                    allowNull: false,
+                },
                 status: {
                     type: DataTypes.ENUM('registered', 'approved', 'rejected'),
                     defaultValue: 'registered',
@@ -25,10 +34,6 @@ module.exports = {
                 address_id: {
                     type: DataTypes.INTEGER,
                     references: { model: 'Addresses', key: 'id' },
-                },
-                user_id: {
-                    type: DataTypes.INTEGER,
-                    references: { model: 'Users', key: 'id' },
                 },
                 createdAt: {
                     type: Sequelize.DATE,

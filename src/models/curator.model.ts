@@ -1,8 +1,6 @@
 import { DataTypes } from 'sequelize';
 import db from '../config/database';
 
-import User from './user.model';
-
 const Curator = db.define('Curator', {
     id: {
         type: DataTypes.INTEGER,
@@ -14,9 +12,14 @@ const Curator = db.define('Curator', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    user_id: {
-        type: DataTypes.INTEGER,
-        references: { model: User, key: 'id' },
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
     },
 });
 

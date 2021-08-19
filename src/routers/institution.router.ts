@@ -1,10 +1,8 @@
 import { Router } from 'express';
-import { findAllInstitution } from '../controllers/institution.controller';
+import { createInstitution, findAllInstitutions } from '../controllers/institution.controller';
 
 const institutionRouter = Router();
 
-institutionRouter
-    .route('/')
-    .get(findAllInstitution)
+institutionRouter.route('/').get(findAllInstitutions).post(createInstitution);
 
 export default institutionRouter;
