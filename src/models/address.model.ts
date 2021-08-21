@@ -1,7 +1,15 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import db from '../config/database';
 
-const Address = db.define('Address', {
+interface IAddressAttributes extends Model {
+    id: number;
+    street: string;
+    number: string;
+    district: string;
+    zip_code: string;
+}
+
+const Address = db.define<IAddressAttributes>('Address', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

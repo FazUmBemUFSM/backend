@@ -12,6 +12,7 @@ const options = {
         acquire: 30000,
         idle: 10000,
     },
+    logging: false,
 };
 
 const sequelize = new Sequelize(

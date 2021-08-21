@@ -1,8 +1,14 @@
 import { Router } from 'express';
-import { createInstitution, findAllInstitutions } from '../controllers/institution.controller';
+import {
+    createInstitution,
+    findAllInstitutions,
+    updateInstitution,
+    deleteInstitution,
+} from '../controllers/institution.controller';
 
-const institutionRouter = Router();
+const institutionRouter = Router({ mergeParams: true });
 
 institutionRouter.route('/').get(findAllInstitutions).post(createInstitution);
+institutionRouter.route('/:institutionId').put(updateInstitution).delete(deleteInstitution);
 
 export default institutionRouter;

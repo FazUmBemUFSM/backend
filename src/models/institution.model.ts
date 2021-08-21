@@ -1,9 +1,16 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import db from '../config/database';
 
-import Address from './address.model';
+interface IInstitutionAttributes extends Model {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+    status: string;
+    address_id: string;
+}
 
-const Institution = db.define('Institution', {
+const Institution = db.define<IInstitutionAttributes>('Institution', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

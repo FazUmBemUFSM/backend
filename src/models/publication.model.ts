@@ -1,9 +1,17 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 import db from '../config/database';
 
 import Institution from './institution.model';
 
-const Publication = db.define('Publication', {
+interface IPublicationAttributes extends Model {
+    id: number;
+    title: string;
+    content: string;
+    status: string;
+    institution_id: number;
+}
+
+const Publication = db.define<IPublicationAttributes>('Publication', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

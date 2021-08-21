@@ -1,7 +1,14 @@
-import { DataTypes } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 import db from '../config/database';
 
-const Curator = db.define('Curator', {
+interface ICuratorAttributes extends Model {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+}
+
+const Curator = db.define<ICuratorAttributes>('Curator', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,

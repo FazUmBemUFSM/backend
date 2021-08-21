@@ -13,8 +13,13 @@ export const saveInstitution = async (
     encryptedPassword: string,
     status: string,
     address_id: number,
+    institution_id?: number,
 ): Promise<any> => {
-    return Institution.create({ name, email, password: encryptedPassword, status, address_id });
+    return Institution.create({ id: institution_id, name, email, password: encryptedPassword, status, address_id });
+};
+
+export const destroyInstitution = async (institution_id: number): Promise<any> => {
+    return Institution.destroy({ where: { id: institution_id } });
 };
 
 export const checkInstitutionLogin = async (email: string, password: string): Promise<any> => {
@@ -24,11 +29,16 @@ export const checkInstitutionLogin = async (email: string, password: string): Pr
         },
     });
 
-    const encryptedPassword = result[0];
-    // achar um jeito para pegar o result[0].password que vem do banco
+    if (result.length > 0) {
+        const { id, name } = result[0];
+        const encryptedPassword = result[0].password;
 
-    if (compare(password, String(encryptedPassword))) {
-        return {}; // retornar objeto com os dados
+        if (compare(password, String(encryptedPassword))) {
+            return {
+                id,
+                name,
+            };
+        }
     } else {
         return null;
     }

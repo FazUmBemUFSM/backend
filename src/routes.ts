@@ -3,11 +3,12 @@ import { Request, Response } from 'express';
 import authRouter from './routers/auth.router';
 import institutionRouter from './routers/institution.router';
 import curatorRouter from './routers/curator.router';
+import authMiddleware from './middlewares/authMiddleware';
 
 const router = Router();
 
-router.use('/institutions', institutionRouter);
-router.use('/curators', curatorRouter);
+router.use('/institutions', authMiddleware, institutionRouter);
+router.use('/curators', authMiddleware, curatorRouter);
 router.use('/auth', authRouter);
 
 // Request made to non-existent resource

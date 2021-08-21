@@ -13,9 +13,8 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
 
     try {
         const institutions = await checkInstitutionLogin(email, password);
-
         if (institutions == null) {
-            const curator = checkCuratorLogin(email, password);
+            const curator = await checkCuratorLogin(email, password);
 
             if (curator == null)
                 return res.status(401).json({
@@ -31,7 +30,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
 
         return res.status(200).json({
             status: 'success',
-            message: 'SA Logged',
+            message: 'Login successfully',
             payload: { auth: true, token },
         });
     } catch (err) {
