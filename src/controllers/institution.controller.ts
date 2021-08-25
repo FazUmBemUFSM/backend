@@ -28,7 +28,7 @@ export const createInstitution = async (req: Request, res: Response): Promise<Re
 
         const result = await saveInstitution(name, email, String(encryptedPassword), status, address_id);
 
-        return res.status(200).json({
+        return res.status(201).json({
             status: 'success',
             message: 'New institution created',
             payload: result,

@@ -9,6 +9,7 @@ import {
 const institutionRouter = Router({ mergeParams: true });
 
 institutionRouter.route('/').get(findAllInstitutions).post(createInstitution);
+
 institutionRouter.route('/:institutionId').put(updateInstitution).delete(deleteInstitution);
 
 export default institutionRouter;

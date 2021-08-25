@@ -28,7 +28,7 @@ export const createCurator = async (req: Request, res: Response): Promise<Respon
 
         const result = await saveCurator(name, email, String(encryptedPassword));
 
-        return res.status(200).json({
+        return res.status(201).json({
             status: 'success',
             message: 'New curator created',
             payload: result,
