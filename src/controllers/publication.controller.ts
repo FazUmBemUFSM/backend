@@ -21,9 +21,18 @@ export const findAllPublications = async (req: Request, res: Response): Promise<
 
 export const createPublication = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { title, content, status, institution_id } = req.body;
+        const { title, content, status, temporary, temporary_start_date, temporary_end_date, institution_id } =
+            req.body;
 
-        const result = await savePublication(title, content, status, institution_id);
+        const result = await savePublication(
+            title,
+            content,
+            status,
+            temporary,
+            temporary_start_date,
+            temporary_end_date,
+            institution_id,
+        );
 
         return res.status(201).json({
             status: 'success',
@@ -41,13 +50,23 @@ export const createPublication = async (req: Request, res: Response): Promise<Re
 
 export const updatePublication = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { title, content, status, institution_id } = req.body;
+        const { title, content, status, temporary, temporary_start_date, temporary_end_date, institution_id } =
+            req.body;
 
         const { publicationId } = req.params;
 
         await destroyPublication(Number(publicationId));
 
-        const result = await savePublication(title, content, status, institution_id);
+        const result = await savePublication(
+            title,
+            content,
+            status,
+            temporary,
+            temporary_start_date,
+            temporary_end_date,
+            institution_id,
+            Number(publicationId),
+        );
 
         return res.status(200).json({
             status: 'success',

@@ -26,6 +26,18 @@ module.exports = {
                     type: DataTypes.ENUM('created', 'published', 'removed'),
                     defaultValue: 'created',
                 },
+                temporary: {
+                    type: DataTypes.BOOLEAN,
+                    allowNull: false,
+                },
+                temporary_start_date: {
+                    type: DataTypes.DATE,
+                    allowNull: true,
+                },
+                temporary_end_date: {
+                    type: DataTypes.DATE,
+                    allowNull: true,
+                },
                 institution_id: {
                     type: DataTypes.INTEGER,
                     references: { model: 'Institutions', key: 'id' },
