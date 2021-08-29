@@ -11,6 +11,7 @@ const options = {
         idle: 10000,
     },
     logging: false,
+    ssl: true,
 };
 
 const sequelize = new Sequelize(`${DATABASE_URL}`, options);
