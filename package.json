@@ -7,8 +7,9 @@
         "lint": "eslint '**/*.{js,ts}' --quiet --fix",
         "start": "yarn run build && node -r dotenv/config dist/index.js",
         "test": "echo \"Error: no test specified\" && exit 1",
+        "tsc": "./node_modules/typescript/bin/tsc",
         "dev": "nodemon",
-        "build": "yarn tsc",
+        "build": "tsc",
         "migrate": "npx sequelize db:create ; npx sequelize db:migrate"
     },
     "author": "ScandiumSoftware",
