@@ -1,8 +1,6 @@
 import { Sequelize } from 'sequelize';
 
-import { DB_DIALECT } from '../utils/constants';
-
-const { DB_HOST, DB_NAME, DB_PORT, DB_USERNAME, DB_PASSWORD, DB_SCHEMA } = process.env;
+const { DB_SCHEMA, DATABASE_URL } = process.env;
 
 const options = {
     schema: DB_SCHEMA,
@@ -15,10 +13,7 @@ const options = {
     logging: false,
 };
 
-const sequelize = new Sequelize(
-    `${DB_DIALECT}://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
-    options,
-);
+const sequelize = new Sequelize(`${DATABASE_URL}`, options);
 
 sequelize
     .authenticate()
