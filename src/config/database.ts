@@ -1,9 +1,10 @@
 import { Sequelize } from 'sequelize';
 
-const { DB_SCHEMA, DATABASE_URL } = process.env;
+const { DB_SCHEMA, DATABASE_URL, SLL } = process.env;
 
 const options = {
     schema: DB_SCHEMA,
+    dialect: 'postgress',
     pool: {
         max: 5,
         min: 0,
@@ -11,10 +12,10 @@ const options = {
         idle: 10000,
     },
     logging: false,
-    ssl: true,
+    ssl: SLL,
 };
 
-const sequelize = new Sequelize(`${DATABASE_URL}`, options);
+const sequelize = new Sequelize(`${DATABASE_URL}`, Object(options));
 
 sequelize
     .authenticate()
