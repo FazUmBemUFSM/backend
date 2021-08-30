@@ -13,5 +13,10 @@ module.exports = {
         options: {
             ssl: true,
         },
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+        },
+        ssl: true,
     },
 };
