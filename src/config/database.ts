@@ -11,10 +11,12 @@ const options = {
         acquire: 30000,
         idle: 10000,
     },
+    ssl: true,
     logging: false,
     dialectOptions: {
         ssl: {
             require: true,
+            rejectUnauthorized: false,
         },
     },
 };
