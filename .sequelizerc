@@ -1,8 +1,21 @@
 const path = require('path');
+const dotenv = require('dotenv');
 
-module.exports = {
-    config: path.resolve('dist', 'db', 'database.js'),
-    'models-path': path.resolve('dist', 'models'),
-    'seeders-path': path.resolve('dist', 'db', 'seeders'),
-    'migrations-path': path.resolve('dist', 'db', 'migrations'),
-};
+dotenv.config();
+
+if(process.env.NODE_ENV == 'production') {
+    module.exports = {
+        config: path.resolve('dist', 'db', 'database.js'),
+        'models-path': path.resolve('dist', 'models'),
+        'seeders-path': path.resolve('dist', 'db', 'seeders'),
+        'migrations-path': path.resolve('dist', 'db', 'migrations'),
+    }
+}else{
+    module.exports = {
+        config: path.resolve('src', 'db', 'database.js'),
+        'models-path': path.resolve('src', 'models'),
+        'seeders-path': path.resolve('src', 'db', 'seeders'),
+        'migrations-path': path.resolve('src', 'db', 'migrations'),
+    }
+}
+

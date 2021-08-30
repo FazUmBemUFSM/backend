@@ -1,25 +1,40 @@
 import { Sequelize } from 'sequelize';
 
-const { DB_SCHEMA, DATABASE_URL, SLL } = process.env;
+const { DB_SCHEMA, DATABASE_URL, NODE_ENV } = process.env;
 
-const options = {
-    schema: DB_SCHEMA,
-    dialect: 'postgress',
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000,
-    },
-    ssl: true,
-    logging: false,
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false,
+let options = null;
+
+if (NODE_ENV == 'production')
+    options = {
+        schema: DB_SCHEMA,
+        dialect: 'postgress',
+        pool: {
+            max: 5,
+            min: 0,
+            acquire: 30000,
+            idle: 10000,
         },
-    },
-};
+        ssl: true,
+        logging: false,
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false,
+            },
+        },
+    };
+else
+    options = {
+        schema: DB_SCHEMA,
+        dialect: 'postgress',
+        pool: {
+            max: 5,
+            min: 0,
+            acquire: 30000,
+            idle: 10000,
+        },
+        logging: false,
+    };
 
 const sequelize = new Sequelize(`${DATABASE_URL}`, Object(options));
 
