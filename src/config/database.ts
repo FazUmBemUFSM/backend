@@ -12,10 +12,9 @@ const options = {
         idle: 10000,
     },
     logging: false,
-    ssl: SLL,
 };
 
-const sequelize = new Sequelize(`${DATABASE_URL}`, Object(options));
+const sequelize = new Sequelize(`${DATABASE_URL}?ssl=${SLL}`, Object(options));
 
 sequelize
     .authenticate()
