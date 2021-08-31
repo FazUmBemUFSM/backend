@@ -9,8 +9,8 @@ import AddressRouter from './routers/addressRouter';
 
 const router = Router();
 
-router.use('/institutions', authMiddleware, institutionRouter);
-router.use('/curators', authMiddleware, curatorRouter);
+router.use('/institutions', institutionRouter);
+router.use('/curators', curatorRouter);
 router.use('/addresses', authMiddleware, AddressRouter);
 router.use('/publications', authMiddleware, publicationRouter);
 router.use('/auth', authRouter);
