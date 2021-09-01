@@ -10,7 +10,8 @@
         "tsc": "./node_modules/typescript/bin/tsc",
         "dev": "nodemon",
         "build": "tsc",
-        "migrate": "npx sequelize db:create ; npx sequelize db:migrate"
+        "migrate": "npx sequelize db:create ; npx sequelize db:migrate",
+        "seed": "npx sequelize-cli db:seed:all --debug"
     },
     "author": "ScandiumSoftware",
     "license": "ISC",
